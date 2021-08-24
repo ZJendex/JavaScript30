@@ -57,7 +57,14 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
+
 <script>
+  /*
+  总结：
+  - 经常将获取的对象打出来好了解获取对象
+  - 若获取的是HTML标签，去w3school找可改变量
+  - 若是JS本身的，去Mozilla的MDN doc上找
+   */
   function playSound(e){
     const audio = document.querySelector(`audio[data-key = "${e.keyCode}"]`);
     const key = document.querySelector(`.key[data-key = "${e.keyCode}"]`);
