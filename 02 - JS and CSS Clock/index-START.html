@@ -20,7 +20,7 @@
     html {
       background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
       background-size: cover;
-      font-family: 'helvetica neue';
+      font-family: 'helvetica neue',serif;
       text-align: center;
       font-size: 10px;
     }
@@ -58,17 +58,46 @@
 
     .hand {
       width: 50%;
-      height: 6px;
+      height: 4px;
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.58, -0.19, 0.43, 1.22);
+      text-align: center;
+    }
+
+    .hour-hand {
+      width: 25%;
+      height: 10px;
+      margin-left: 25%
+    }
+
+    .min-hand {
+      width: 40%;
+      height: 7px;
+      margin-left: 10%
     }
 
   </style>
 
   <script>
+    const hHand = document.querySelector(".hour-hand");
+    const mHand = document.querySelector(".min-hand");
+    const sHand = document.querySelector('.second-hand');
 
-
+    function changes(){
+      const now = new Date();
+      const hDeg = now.getHours()*360/12 + now.getMinutes()*360/12/60 + now.getSeconds()*360/12/60/60 + 90;
+      const mDeg = now.getMinutes()*360/60 + now.getSeconds()*360/60/60 + 90;
+      const sDeg = now.getSeconds()*360/60 + 90;
+      hHand.style.transform = `rotate(${hDeg}deg)`;
+      mHand.style.transform = `rotate(${mDeg}deg)`;
+      sHand.style.transform = `rotate(${sDeg}deg)`;
+    }
+    setInterval(changes, 1000);
   </script>
 </body>
 </html>
