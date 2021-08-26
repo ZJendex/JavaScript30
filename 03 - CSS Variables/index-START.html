@@ -60,6 +60,12 @@
   </style>
 
   <script>
+    /*
+    总结：
+    - CSS 的全局变量
+    - web界面所能改变root变量的input标签name赋值其对应root变量名好在JS中做对应修改
+    - html中"data-##"标签通过dataset对象获取其值，"##"为对象键名
+ */
     const inputs = document.querySelectorAll(".controls input");
     function handleChanges(e){
       const suffix = this.dataset.sizing || "";
